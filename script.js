@@ -32,11 +32,12 @@ function Controller() {
 			prefix = "";
 			
 		// setInnerHtml(prefix + "main", data.weather[0].main in dict ? dict[data.weather[0].main] : data.weather[0].main);
-		setInnerHtml(prefix + "pic", "<img src=\"" + nightModePrefix + data.weather[0].main + ".png\"></img>");
+		var nightPrefix = data.main ? nightModePrefix : "";
+		setInnerHtml(prefix + "pic", "<img src=\"" + nightPrefix + data.weather[0].main + ".png\"></img>");
 		if (data.main) {
 			setInnerHtml(prefix + "main.temp", Math.round(data.main.temp) + "°C");
 			setInnerHtml(prefix + "pressure", Math.round(data.main.pressure*0.7500638) + " мм рт. ст.");
-			setInnerHtml(prefix + "humidity", data.main.humidity) + "%";
+			setInnerHtml(prefix + "humidity", data.main.humidity + "%");
 		}
 		else {
 			setInnerHtml(prefix + "main.temp-range", Math.round(data.temp.min) + "°C.." + Math.round(data.temp.max) + "°C");
