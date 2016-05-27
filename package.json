@@ -1,0 +1,12 @@
+{
+  "name": "Monitoring.WebTiles",
+  "version": "0.1.0",
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:w": "tsc -w -m AMD --sourceMap",
+    "start": "npm run tsc:w"
+  },
+  "devDependencies": {
+    "typescript": "^1.7.5"
+  }
+}
