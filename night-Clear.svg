@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="100" height="100"
+  xmlns="http://www.w3.org/2000/svg" 
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <g stroke="#ffcc33" stroke-width=".25" stroke-linecap="round" fill="none">
+	  <path d="m 2,0 a 2,2 0,1,0 2,2 a 1,1 0,1,1 -2,-2 z" transform="scale(20) translate(.5,.5)"/>
+  </g>
+
+</svg>
