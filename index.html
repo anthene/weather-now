@@ -1,76 +1,60 @@
 <html lang="ru">
 	<head>
-		<title>XHR</title>
+		<title>Погода сегодня</title>
 		<meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		
+		<link href='https://fonts.googleapis.com/css?family=Roboto:100&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="style.css" type="text/css">
 	</head>
 	<body>
-		<a href="javascript:void(0)" onclick="getWeatherData(fillForm)">Обновить</a>
-		
-		<h4>Время</h4>
-		<div id="dt"></div>
-		<h4>Восход</h4>
-		<div id="sunrise"></div>
-		<h4>Заход</h4>
-		<div id="sunset"></div>
-		<h4>В общем</h4>
-		<div id="main"></div>
-		<h4>Температура</h4>
-		<div id="main.temp"></div>
-		<h4>Давление</h4>
-		<div id="pressure"></div>
-		<h4>Влажность</h4>
-		<div id="humidity"></div>
-		<h4>Скорость ветра</h4>
-		<div id="wind.speed"></div>
-		
-		<script type="text/javascript">
-			var dict = {
-				Thunderstorm: "Гроза",
-				Drizzle: "Мелкий дождь",
-				Rain: "Дождь",
-				Snow: "Снег",
-				Atmosphere: "Atmosphere",
-				Clear: "Ясно",
-				Clouds: "Облачно",
-				Extreme: "Extreme",
-				Additional: "Additional",
-			}
-		
-			function fillForm(data) {
-				document.getElementById("dt").innerHTML = new Date(1000*data.dt);
-				document.getElementById("main").innerHTML = dict[data.weather[0].main];
-				document.getElementById("main.temp").innerHTML = data.main.temp;
-				document.getElementById("pressure").innerHTML = data.main.pressure*0.007500638;
-				document.getElementById("humidity").innerHTML = data.main.humidity;
-				document.getElementById("wind.speed").innerHTML = data.wind.speed;
-				document.getElementById("sunrise").innerHTML = new Date(1000*data.sys.sunrise);
-				document.getElementById("sunset").innerHTML = new Date(1000*data.sys.sunset);
-			}
-		
-			function getWeatherData(callback) {
-				var xhr = new XMLHttpRequest();
-
-				xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?id=524901&units=metric&appid=0da70d33c9a5dfaf3ded356599ea6929', true);
-				
-				xhr.onreadystatechange = function () {
-					if (xhr.readyState != 4) return;
-					
-					if (xhr.status === 200) {
-						callback(JSON.parse(xhr.responseText));
-					}
-				}
-
-				xhr.send();
-			}
+		<div id="weather" class="struct">
+<!--
+			<a href="javascript:void(0)" onclick="getWeatherData(fillForm)">Обновить</a>
+-->
+			<div class="struct">Сейчас</div>
+			<div id="main" class="struct"></div>
 			
-			function startGetWeatherData() {
-				setInterval(function () { getWeatherData(fillForm); }, 60000);
-			}
+			<div id="pic" class="struct"></div>
+
+			<div id="data" class="struct">
+				<div id="main.temp"></div>
+				<div id="pressure" class="details"></div>
+			</div>
 			
-			getWeatherData(fillForm);
-			<!-- startGetWeatherData(); -->
-		</script>
+			<div id="dt" class="struct"></div>
+<!--
+			<h4>Влажность</h4>
+			<div id="humidity"></div>
+			<h4>Скорость ветра</h4>
+			<div id="wind.speed"></div>
+			<h4>Время</h4>
+			<h4>Восход</h4>
+			<div id="sunrise"></div>
+			<h4>Заход</h4>
+			<div id="sunset"></div>
+-->
+		</div>
+		<div id="today" class="struct forecast-struct">
+			<div class="struct">Сегодня</div>
+			<div id="tod-main"></div>
+			<div id="tod-pic" class="struct"></div>
+			<div id="tod-data" class="struct">
+				<div id="tod-main.temp-range"></div>
+				<div id="tod-pressure" class="details"></div>
+			</div>
+		</div>
+		<div id="tomorrow" class="struct forecast-struct">
+			<div class="struct">Завтра</div>
+			<div id="tom-main"></div>
+			<div id="tom-pic" class="struct"></div>
+			<div id="tom-data" class="struct">
+				<div id="tom-main.temp-range"></div>
+				<div id="tom-pressure" class="details"></div>
+			</div>
+		</div>
+		
+		<script src="script.js"></script>
 	</body>
 </html>
