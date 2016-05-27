@@ -1,6 +1,6 @@
 <html lang="ru">
 	<head>
-		<title>Погода сегодня</title>
+		<title>Погода в Москве СЕЙЧАС, СЕГОДНЯ, ЗАВТРА</title>
 		<meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -9,11 +9,11 @@
 		<link rel="stylesheet" href="style.css" type="text/css">
 	</head>
 	<body>
-		<div id="weather" class="struct">
+		<div id="weather" class="struct background">
 <!--
 			<a href="javascript:void(0)" onclick="getWeatherData(fillForm)">Обновить</a>
 -->
-			<div class="struct">Сейчас</div>
+			<div id="now-caption" class="struct">Сейчас</div>
 			<div id="main" class="struct"></div>
 			
 			<div id="pic" class="struct"></div>
@@ -36,8 +36,8 @@
 			<div id="sunset"></div>
 -->
 		</div>
-		<div id="today" class="struct forecast-struct">
-			<div class="struct">Сегодня</div>
+		<div id="today" class="struct forecast-struct tod-background">
+			<div id="tod-caption" class="struct">Сегодня</div>
 			<div id="tod-main"></div>
 			<div id="tod-pic" class="struct"></div>
 			<div id="tod-data" class="struct">
@@ -45,8 +45,8 @@
 				<div id="tod-pressure" class="details"></div>
 			</div>
 		</div>
-		<div id="tomorrow" class="struct forecast-struct">
-			<div class="struct">Завтра</div>
+		<div id="tomorrow" class="struct forecast-struct tom-background">
+			<div id="tom-caption" class="struct">Завтра</div>
 			<div id="tom-main"></div>
 			<div id="tom-pic" class="struct"></div>
 			<div id="tom-data" class="struct">

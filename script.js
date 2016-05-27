@@ -17,11 +17,16 @@ function setInnerHtml(elemId, value) {
 		elem.innerHTML = value;
 }
 
+function replaceClass(elemId, oldClass, newClass) {
+	var elem = document.getElementById(elemId);
+	elem.classList.remove(oldClass);
+	elem.classList.add(newClass);
+}
+
 function fillForm(data, prefix) {
 	if (prefix === undefined)
 		prefix = "";
 		
-	setInnerHtml(prefix + "dt", new Date(1000*data.dt).toLocaleString("ru"));
 	// setInnerHtml(prefix + "main", data.weather[0].main in dict ? dict[data.weather[0].main] : data.weather[0].main);
 	setInnerHtml(prefix + "pic", "<img src=\"" + data.weather[0].main + ".png\"></img>");
 	if (data.main) {
@@ -67,9 +72,24 @@ function startGetWeatherData() {
 	setInterval(function () { getWeatherData(fillForm); }, 60000);
 }
 
-getWeatherData(fillForm);
+function setTime() {
+	setInnerHtml("dt", new Date().toLocaleTimeString("ru"));
+}
+
+getWeatherData(function (data) {
+	fillForm(data);
+		
+	var now = new Date().valueOf();
+	if (1000 * data.sys.sunrise > now || 1000 * data.sys.sunset < now) {
+		replaceClass("weather",  "background", "night-background");
+		replaceClass("today",  "tod-background", "night-tod-background");
+		replaceClass("tomorrow",  "tom-background", "night-tom-background");
+	}
+});
 getForecastData(function (data) {
 	fillForm(data.list[0], "tod-");
 	fillForm(data.list[1], "tom-");
 });
+setTime();
+setInterval(setTime, 1000);
 //<!-- startGetWeatherData(); -->
