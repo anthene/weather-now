@@ -1,12 +1,19 @@
 {
-  "name": "Monitoring.WebTiles",
+  "name": "wather-now",
   "version": "0.1.0",
+  "description": "Weather NOW, TODAY, TOMORROW",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/anthene/weather-now"
+  },
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w -m AMD --sourceMap",
-    "start": "npm run tsc:w"
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server\""
   },
   "devDependencies": {
+    "concurrently": "^2.1.0",
+    "lite-server": "^2.2.0",
     "typescript": "^1.7.5"
   }
 }
