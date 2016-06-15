@@ -3,6 +3,8 @@ import { IWeatherComponent } from "./weather.component";
 import { WeatherData, WeatherForecast } from "./weather";
 
 export class LoadDataComponent {
+	private iconsFolder = "icons" 
+
 	constructor(private doc: IDocument, private weatherComponent: IWeatherComponent) {
 	}
 	
@@ -41,7 +43,7 @@ export class LoadDataComponent {
 
 		this.setInnerHtml(prefix + "main.temp-range", Math.round(data.temp.min) + "°C.." + Math.round(data.temp.max) + "°C");
 		this.setInnerHtml(prefix + "pressure", Math.round(data.pressure*0.7500638) + " мм рт. ст.");
-		this.setInnerHtml(prefix + "pic", data.weather[0].main + ".png", "src");
+		this.setInnerHtml(prefix + "pic", `${this.iconsFolder}/${data.weather[0].main}.png`, "src");
 
 		// setInnerHtml(prefix + "pressure", Math.round(data.main.pressure*0.7500638) + " мм рт. ст.");
 		// setInnerHtml(prefix + "wind.speed", data.wind.speed);
@@ -55,7 +57,7 @@ export class LoadDataComponent {
 		this.setInnerHtml(prefix + "pressure", Math.round(data.main.pressure*0.7500638) + " мм рт. ст.");
 		// this.setInnerHtml(prefix + "humidity", data.main.humidity + "%");
 
-		this.setInnerHtml(prefix + "pic", `${nightPrefix}${data.weather[0].main}.png`, "src");
+		this.setInnerHtml(prefix + "pic", `${this.iconsFolder}/${nightPrefix}${data.weather[0].main}.png`, "src");
 	}
 	
 	private setInnerHtml(elemId: string, value: string, prop?: string) {
