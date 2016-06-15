@@ -10,8 +10,10 @@ export class LoadDataComponent {
 	
 	loadData() {
 		// todo: what's wrong???
-		this.weatherComponent.getWeatherData(data => LoadDataComponent.setWeatherData(this, data));
-		this.weatherComponent.getForecastData(data => LoadDataComponent.setForecastData(this, data));
+		this.weatherComponent.getWeatherData(data => {
+			LoadDataComponent.setWeatherData(this, data.now);
+			LoadDataComponent.setForecastData(this, data.forecast)
+		});
 		LoadDataComponent.setTime(this)
 		setInterval(() => LoadDataComponent.setTime(this), 1000);
 	}

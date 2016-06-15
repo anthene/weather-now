@@ -1,8 +1,7 @@
 import { WeatherData, WeatherForecast } from "./weather";
 
 export interface IWeatherComponent {
-	getWeatherData(callback: (data: WeatherData) => void): void;
-	getForecastData(callback: (data: Array<WeatherForecast>) => void): void;
+	getWeatherData(callback: (data: {now:WeatherData, forecast: Array<WeatherForecast>}) => void): void;
 }
 
 export class WeatherComponent implements IWeatherComponent {
@@ -24,13 +23,14 @@ export class WeatherComponent implements IWeatherComponent {
 		xhr.send();
 	}
 	
-	getWeatherData(callback: (data: WeatherData) => void): void {
+	getWeatherData(callback: (data: {now:WeatherData, forecast: Array<WeatherForecast>}) => void): void {
 		const request = `${this.url}weather?id=524901&units=metric&appid=0da70d33c9a5dfaf3ded356599ea6929`;
-		WeatherComponent.sendRequest(request, callback);
-	}
-	
-	getForecastData(callback: (data: Array<WeatherForecast>) => void): void {
-		const request = `${this.url}forecast/daily?id=524901&cnt=2&units=metric&appid=0da70d33c9a5dfaf3ded356599ea6929`;
-		WeatherComponent.sendRequest(request, (forecast:{list:Array<WeatherForecast>}) => callback(forecast.list));
+		WeatherComponent.sendRequest(request, (now:WeatherData) => {
+			const forecastRequest = `${this.url}forecast/daily?id=524901&cnt=2&units=metric&appid=0da70d33c9a5dfaf3ded356599ea6929`;
+			WeatherComponent.sendRequest(forecastRequest, (forecast:{list:Array<WeatherForecast>}) => callback({
+					now: now,
+					forecast: forecast.list
+				}));
+		});
 	}
 }
