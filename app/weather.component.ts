@@ -27,10 +27,19 @@ export class WeatherComponent implements IWeatherComponent {
 		const request = `${this.url}weather?id=524901&units=metric&appid=0da70d33c9a5dfaf3ded356599ea6929`;
 		WeatherComponent.sendRequest(request, (now:WeatherData) => {
 			const forecastRequest = `${this.url}forecast/daily?id=524901&cnt=2&units=metric&appid=0da70d33c9a5dfaf3ded356599ea6929`;
-			WeatherComponent.sendRequest(forecastRequest, (forecast:{list:Array<WeatherForecast>}) => callback({
+			WeatherComponent.sendRequest(forecastRequest, (forecast:{list:Array<WeatherForecast>}) => {
+				const today = forecast.list[0];
+				if (today.temp.min > now.main.temp) {
+					today.temp.min = now.main.temp;
+				}
+				if (today.temp.max < now.main.temp) {
+					today.temp.max = now.main.temp;
+				}
+				callback({
 					now: now,
 					forecast: forecast.list
-				}));
+				});
+			});
 		});
 	}
 }
