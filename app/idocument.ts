@@ -1,9 +1,8 @@
 export interface IDocument {
 	getElementById(elemId: string): {
-		innerHTML: string;
 		classList: {
-			add(item: string);
-			remove(item: string);
+			add(item: string): void;
+			remove(item: string): void;
 		}
 	};
 }

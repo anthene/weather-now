@@ -1,19 +1,6 @@
 import { IDocument } from "./idocument";
 import { IWeatherComponent } from "./weather.component";
-
-interface Weather {
-	weather: Array<{main:string}>;
-}
-
-interface WeatherData extends Weather {
-	main: { temp: number, pressure: number };
-	sys: { sunrise: number, sunset: number };
-}
-
-interface WeatherForecast extends Weather {
-	temp: { min: number, max:number };
-	pressure: number;
- }
+import { WeatherData, WeatherForecast } from "./weather";
 
 export class LoadDataComponent {
 	constructor(private doc: IDocument, private weatherComponent: IWeatherComponent) {
@@ -22,20 +9,22 @@ export class LoadDataComponent {
 	loadData() {
 		// todo: what's wrong???
 		this.weatherComponent.getWeatherData(data => LoadDataComponent.setWeatherData(this, data));
-		this.weatherComponent.getForecastData(data => LoadDataComponent.setForecastData(this, data.list));
+		this.weatherComponent.getForecastData(data => LoadDataComponent.setForecastData(this, data));
 		LoadDataComponent.setTime(this)
 		setInterval(() => LoadDataComponent.setTime(this), 1000);
 	}
 	
 	private static setWeatherData(mainComponent: LoadDataComponent, data: WeatherData) {
 		const now = new Date().valueOf();
+		let nightPrefix = "";
 		if (1000 * data.sys.sunrise > now || 1000 * data.sys.sunset < now) {
+			nightPrefix = "night-"
 			mainComponent.replaceClass("weather",  "background", "night-background");
 			mainComponent.replaceClass("today",  "tod-background", "night-tod-background");
 			mainComponent.replaceClass("tomorrow",  "tom-background", "night-tom-background");
 		}
 
-		mainComponent.fillNow(data);
+		mainComponent.fillNow(data, nightPrefix);
 	}
 	
 	private static setForecastData(mainComponent: LoadDataComponent, data: Array<WeatherForecast>) {
@@ -52,7 +41,7 @@ export class LoadDataComponent {
 
 		this.setInnerHtml(prefix + "main.temp-range", Math.round(data.temp.min) + "°C.." + Math.round(data.temp.max) + "°C");
 		this.setInnerHtml(prefix + "pressure", Math.round(data.pressure*0.7500638) + " мм рт. ст.");
-		this.setInnerHtml(prefix + "pic", "<img src=\"" + data.weather[0].main + ".png\"></img>");
+		this.setInnerHtml(prefix + "pic", data.weather[0].main + ".png", "src");
 
 		// setInnerHtml(prefix + "pressure", Math.round(data.main.pressure*0.7500638) + " мм рт. ст.");
 		// setInnerHtml(prefix + "wind.speed", data.wind.speed);
@@ -60,20 +49,25 @@ export class LoadDataComponent {
 		// setInnerHtml(prefix + "sunset", new Date(1000*data.sys.sunset));
 	}
 	
-	private fillNow(data: WeatherData) {
+	private fillNow(data: WeatherData, nightPrefix: string) {
 		const prefix = "";
 		this.setInnerHtml(prefix + "main.temp", Math.round(data.main.temp) + "°C");
 		this.setInnerHtml(prefix + "pressure", Math.round(data.main.pressure*0.7500638) + " мм рт. ст.");
 		// this.setInnerHtml(prefix + "humidity", data.main.humidity + "%");
 
-		this.setInnerHtml(prefix + "pic", "<img src=\"" + "night-" + data.weather[0].main + ".png\"></img>");
+		this.setInnerHtml(prefix + "pic", `${nightPrefix}${data.weather[0].main}.png`, "src");
 	}
 	
-	private setInnerHtml(elemId: string, value: string) {
-		const elem = this.doc.getElementById(elemId);
+	private setInnerHtml(elemId: string, value: string, prop?: string) {
+		if (!prop) {
+			prop = "innerHTML";
+		}
+		
+		// todo: think on 'any'
+		const elem = <any>this.doc.getElementById(elemId);
 		
 		if (elem)
-			elem.innerHTML = value;
+			elem[prop] = value;
 	}
 	
 	private replaceClass(elemId: string, oldClass: string, newClass: string) {
