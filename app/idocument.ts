@@ -5,4 +5,6 @@ export interface IDocument {
 			remove(item: string): void;
 		}
 	};
+	// todo: think on any
+	getElementsByName(name: string): NodeListOf<any>;
 }

@@ -22,6 +22,9 @@ export class LoadDataComponent {
 		const now = new Date().valueOf();
 		let nightPrefix = "";
 		if (1000 * data.sys.sunrise > now || 1000 * data.sys.sunset < now) {
+			// todo: hack
+			mainComponent.doc.getElementsByName("theme-color")[0].content = "#111";
+
 			nightPrefix = "night-"
 			mainComponent.replaceClass("weather",  "background", "night-background");
 			mainComponent.replaceClass("today",  "tod-background", "night-tod-background");
