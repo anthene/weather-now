@@ -1,6 +1,6 @@
 <div [id]="id" class="weather-item" (click)="go()">
     <div class="time">{{data.time}}</div>
-    <div class="status">{{data.status}}</div>
+    <div class="status"><img [src]="'icons/'+data.status+'.png'"/></div>
     <div class="humidity">93%</div>
     <div class="pressure">{{data.pressure}} мм рт. ст.</div>
     <div class="temp">{{data.temp()}}</div>
