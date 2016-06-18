@@ -1,44 +1,20 @@
 import { Component } from '@angular/core';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
-import { WeatherData, NowData, ForecastData } from './weather.data';
-import { NowComponent, TodComponent, TomComponent } from './now.component';
+import { WeatherComponent } from './weather/weather.component';
+import { ForecastComponent } from './weather/forecast.component';
+import { DayDetailsComponent } from './weather/day-details.component';
 
 @Component({
   selector: 'weather',
-  directives: [NowComponent, TodComponent, TomComponent],
-  templateUrl: "app/app.html"
+  directives: [ROUTER_DIRECTIVES],
+  providers: [ROUTER_PROVIDERS],
+  template: "<router-outlet></router-outlet>"
 })
+@RouteConfig([
+    { path: '/', name: 'Weather', component: WeatherComponent },
+    { path: '/forecast', name: 'Forecast', component: ForecastComponent },
+    { path: '/:day', name: 'Details', component: DayDetailsComponent }
+])
 export class AppComponent {
-    weatherData: WeatherData;
-
-    constructor() {
-        const now = new NowData();
-
-        now.time= "Сейчас";
-        now.status= "Clear";
-        now.nowTemp= 25;
-        now.pressure= 765;
-
-        const today = new ForecastData();
-
-        today.time= "Сегодня";
-        today.status= "Clouds";
-        today.minTemp= 26;
-        today.maxTemp= 27;
-        today.pressure= 766;
-
-        const tomorrow = new ForecastData();
-
-        tomorrow.time= "Завтра";
-        tomorrow.status= "Rain";
-        tomorrow.minTemp= 28;
-        tomorrow.maxTemp= 29;
-        tomorrow.pressure= 767;
-
-        this.weatherData = {
-            now: now,
-            today: today,
-            tomorrow: tomorrow
-        }
-    }
 }

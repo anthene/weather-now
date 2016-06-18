@@ -62,6 +62,10 @@ div {
 	left: 50%;
 }
 
+body {
+	background: green;
+}
+
 #now{
 	background: #000;
 }
