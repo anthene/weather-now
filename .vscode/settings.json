@@ -4,11 +4,9 @@
         ".vscode": true,
         ".gitignore": true,
         "node_modules": true,
-        "app/weather-items/*.js.map": true,
-        "app/weather-items/*.js": true,
-        "app/weather/*.js.map": true,
-        "app/weather/*.js": true,
         "app/*.js.map": true,
-        "app/*.js": true
+        "app/*.js": true,
+        "app/*/**.js.map": true,
+        "app/*/**.js": true
     }
 }

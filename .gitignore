@@ -1,8 +1,4 @@
 node_modules/*
 typings/*
-app/*.js
-app/*.js.map
-app/weather-items/*.js
-app/weather-items/*.js.map
-app/weather/*.js
-app/weather/*.js.map
+app/**/*.js
+app/**/*.js.map
