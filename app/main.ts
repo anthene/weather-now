@@ -1,4 +1,3 @@
-import { WeatherComponent } from "./weather.component";
-import { LoadDataComponent } from "./load.data.component";
-
-new LoadDataComponent(document, new WeatherComponent()).loadData();
+import { bootstrap }    from '@angular/platform-browser-dynamic';
+import { AppComponent } from './app.component';
+bootstrap(AppComponent);

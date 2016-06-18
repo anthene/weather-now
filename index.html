@@ -1,67 +1,23 @@
-<html lang="ru">
-	<head>
-		<title>Погода в Москве СЕЙЧАС, СЕГОДНЯ, ЗАВТРА</title>
-		<meta charset="utf-8"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-		<meta name="theme-color" content="#2196f3"/>
-		
-		<link href='https://fonts.googleapis.com/css?family=Roboto:100&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="style.css?version=1" type="text/css">
-		
-		<script data-main="app" src="require.js"></script>
-	</head>
-	<body>
-		<div id="weather" class="struct background">
-<!--
-			<a href="javascript:void(0)" onclick="getWeatherData(fillForm)">Обновить</a>
--->
-			<div id="now-caption" class="struct">Сейчас</div>
-			<div id="main" class="struct"></div>
-			
-			<div class="struct pic">
-				<img id="pic"></img>
-			</div>
-
-			<div id="data" class="struct">
-				<div id="main.temp"></div>
-				<div id="pressure" class="details"></div>
-			</div>
-			
-			<div id="dt" class="struct"></div>
-<!--
-			<h4>Влажность</h4>
-			<div id="humidity"></div>
-			<h4>Скорость ветра</h4>
-			<div id="wind.speed"></div>
-			<h4>Время</h4>
-			<h4>Восход</h4>
-			<div id="sunrise"></div>
-			<h4>Заход</h4>
-			<div id="sunset"></div>
--->
-		</div>
-		<div id="today" class="struct forecast-struct tod-background">
-			<div id="tod-caption" class="struct">Сегодня</div>
-			<div id="tod-main"></div>
-			<div class="struct pic">
-				<img id="tod-pic"></img>
-			</div>
-			<div id="tod-data" class="struct">
-				<div id="tod-main.temp-range"></div>
-				<div id="tod-pressure" class="details"></div>
-			</div>
-		</div>
-		<div id="tomorrow" class="struct forecast-struct tom-background">
-			<div id="tom-caption" class="struct">Завтра</div>
-			<div id="tom-main"></div>
-			<div class="struct pic">
-				<img id="tom-pic"></img>
-			</div>
-			<div id="tom-data" class="struct">
-				<div id="tom-main.temp-range"></div>
-				<div id="tom-pressure" class="details"></div>
-			</div>
-		</div>
-	</body>
+<html>
+  <head>
+    <title>Angular 2 QuickStart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles.css?version=1" type="text/css"/>
+    <!-- 1. Load libraries -->
+     <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+  </head>
+  <!-- 3. Display the application -->
+  <body>
+    <weather>Loading...</weather>
+  </body>
 </html>
