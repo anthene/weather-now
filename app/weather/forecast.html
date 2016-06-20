@@ -1,0 +1,3 @@
+<div *ngFor="let forecastItem of forecast; let i=index" class="forecast-item" [id]="'forecast-item-'+i" (click)="goBack()">
+    {{forecastItem.time}}|{{forecastItem.status}}|{{forecastItem.temp()}}|{{forecastItem.pressure}}
+</div>

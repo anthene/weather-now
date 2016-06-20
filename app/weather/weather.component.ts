@@ -12,6 +12,7 @@ import { OpenWeatherService } from "../weather-services/open-weather.service";
 @Component({
   directives: [NowComponent, TodComponent, TomComponent],
   providers: [OpenWeatherService],
+  //styleUrls: ["styles/weather.css", "styles/details.css"],
   templateUrl: "app/weather/weather.html"
 })
 export class WeatherComponent {

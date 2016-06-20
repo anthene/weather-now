@@ -33,6 +33,9 @@ export class TestWeatherService implements WeatherService {
                 tomorrow: tomorrow
             });
         });
+    }
 
+    getWeekForecast(): Promise<ForecastData[]> {
+        return undefined;
     }
 }

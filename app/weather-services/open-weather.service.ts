@@ -28,6 +28,15 @@ export class OpenWeatherService implements WeatherService {
                     }));
     }
 
+    getWeekForecast(): Promise<ForecastData[]> {
+        return this.http.get(`${OpenWeatherService.url}forecast/daily?id=524901&cnt=7&units=metric&appid=0da70d33c9a5dfaf3ded356599ea6929`)
+                    .toPromise()
+                    .then(res => {
+                        const json = res.json();
+                        return json.list.map((item: any) => toForecastData(item, "future"));
+                    });
+    }
+
     // todo: catch exception
 }
 

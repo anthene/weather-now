@@ -1,0 +1,27 @@
+body {
+	background: green;
+}
+
+#now{
+	background: #000;
+}
+
+#tod {
+	background: #111;
+}
+
+#tom {
+	background: #222;
+}
+
+.time, .status, .temp, .humidity {
+	background: #333;
+}
+
+.pressure {
+	background: #444;
+}
+
+.forecast-item {
+	background: linear-gradient(to top, #222, #000);
+}

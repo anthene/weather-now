@@ -1,30 +1,3 @@
-body {
-	color: white;
-	margin: 0;
-}
-
-div {
-	position: absolute;
-}
-
-#now {
-	width: 100%;
-	height: 75%;
-}
-
-#tod, #tom {
-	width: 50%;
-	height: 25%;
-	top: 75%;
-}
-
-#tod {
-}
-
-#tom {
-	left: 50%;
-}
-
 .time {
 	left: 1%;
 	top: 1%;
@@ -66,28 +39,3 @@ div {
 	width: 50%;
 	left: 50%;
 }
-
-body {
-	background: green;
-}
-
-#now{
-	background: #000;
-}
-
-#tod {
-	background: #111;
-}
-
-#tom {
-	background: #222;
-}
-
-.time, .status, .temp, .humidity {
-	background: #333;
-}
-
-.pressure {
-	background: #444;
-}
-
