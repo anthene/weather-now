@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
 
-import { InfoComponent } from './info.component';
+import { InfoComponent } from '../shared/info.component';
 
 @Component({
   template: `<div (click)="goBack()">Day Details Component</div>`

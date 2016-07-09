@@ -4,9 +4,8 @@
         ".vscode": true,
         ".gitignore": true,
         "node_modules": true,
-        "app/*.js.map": true,
-        "app/*.js": true,
-        "app/*/**.js.map": true,
-        "app/*/**.js": true
+        "src/**/*.js.map": true,
+        "src/**/*.js": true,
+		"typings": true
     }
 }

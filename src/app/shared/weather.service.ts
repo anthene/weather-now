@@ -1,4 +1,5 @@
-import { WeatherData, ForecastData } from "../weather.data"
+import { WeatherData } from "./weather-data.model"
+import { ForecastData } from "./forecast-data.model"
 
 export interface WeatherService {
     getWeatherData(): Promise<WeatherData>;

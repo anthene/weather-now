@@ -2,3 +2,8 @@ node_modules/*
 typings/*
 app/**/*.js
 app/**/*.js.map
+app/**/*.js
+src/**/*.js
+src/**/*.js.map
+!src/libs/**/*.js
+!src/systemjs.config.js

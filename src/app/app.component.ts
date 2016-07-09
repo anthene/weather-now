@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 import { WeatherComponent } from './weather/weather.component';
-import { ForecastComponent } from './weather/forecast.component';
-import { DayDetailsComponent } from './weather/day-details.component';
+import { ForecastComponent } from './forecast/forecast.component';
+import { DayDetailsComponent } from './day-details/day-details.component';
 
 @Component({
   selector: 'weather',

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
 
-import { WeatherItemData } from '../weather.data';
+import { WeatherItemData } from '../shared/weather-item-data.model';
 
 export abstract class WeatherItemComponent {
   @Input()

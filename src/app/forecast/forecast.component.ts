@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
 
-import { InfoComponent } from './info.component';
-import { OpenWeatherService } from "../weather-services/open-weather.service";
-import { ForecastData } from "../weather.data"
+import { InfoComponent } from '../shared/info.component';
+import { ForecastData } from '../shared/forecast-data.model';
+import { OpenWeatherService } from '../shared/open-weather.service';
 
 @Component({
   providers: [OpenWeatherService],
   styleUrls: ["styles/forecast.css"],
-  templateUrl: "app/weather/forecast.html"
+  templateUrl: "src/app/forecast/forecast.html"
 })
 export class ForecastComponent extends InfoComponent {
   forecast: ForecastData[];

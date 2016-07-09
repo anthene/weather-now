@@ -3,8 +3,10 @@ import { Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { WeatherData, NowData, ForecastData } from "../weather.data"
-import { WeatherService } from "./weather.service"
+import { WeatherData } from "./weather-data.model";
+import { NowData } from "./now-data.model";
+import { ForecastData } from "./forecast-data.model";
+import { WeatherService } from "./weather.service";
 
 @Injectable()
 export class OpenWeatherService implements WeatherService {

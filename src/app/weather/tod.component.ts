@@ -5,7 +5,7 @@ import { WeatherItemComponent } from './weather-item.component';
 
 @Component({
   selector: 'tod',
-  templateUrl: "app/weather-items/weather-item-data.html"
+  templateUrl: "src/app/weather/weather-item-data.html"
 })
 export class TodComponent extends WeatherItemComponent {
   constructor(router: Router) {
