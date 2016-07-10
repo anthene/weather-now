@@ -1,3 +1,7 @@
 <div *ngFor="let forecastItem of forecast; let i=index" class="forecast-item" [id]="'forecast-item-'+i" (click)="goBack()">
-    {{forecastItem.time}}|{{forecastItem.status}}|{{forecastItem.temp()}}|{{forecastItem.pressure}}
+    <div class="time">{{forecastItem.time}}</div>
+    <div class="status"><img [src]="'icons/'+forecastItem.status+'.png'"/></div>
+    <div class="humidity">93%</div>
+    <div class="pressure">{{forecastItem.pressure}} мм рт. ст.</div>
+    <div class="temp">{{forecastItem.temp()}}</div>
 </div>

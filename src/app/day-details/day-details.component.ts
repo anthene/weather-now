@@ -7,7 +7,7 @@ import { OpenWeatherService } from '../shared/open-weather.service';
 
 @Component({
   providers: [OpenWeatherService],
-  styleUrls: ["styles/day-details.css"],
+  styleUrls: ["styles/day-details.css", "styles/item.css"],
   templateUrl: "src/app/day-details/day-details.html"
 })
 export class DayDetailsComponent extends InfoComponent {

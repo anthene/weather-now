@@ -1,10 +1,9 @@
-body {
-	color: white;
-	margin: 0;
+.temp {
+	font-size: 7vh;
 }
 
-div {
-	position: absolute;
+.humidity, .pressure {
+	font-size: 3.5vh;
 }
 
 .forecast-item {

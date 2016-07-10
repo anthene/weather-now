@@ -1,3 +1,7 @@
 <div *ngFor="let dayDetail of dayDetails; let i=index" class="day-detail-item" [id]="'day-detail-item-'+i" (click)="goBack()">
-    {{dayDetail.time}}|{{dayDetail.status}}|{{dayDetail.temp()}}|{{dayDetail.pressure}}
+    <div class="time">{{dayDetail.time}}</div>
+    <div class="status"><img [src]="'icons/'+dayDetail.status+'.png'"/></div>
+    <div class="humidity">93%</div>
+    <div class="pressure">{{dayDetail.pressure}} мм рт. ст.</div>
+    <div class="temp">{{dayDetail.temp()}}</div>
 </div>

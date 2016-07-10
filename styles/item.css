@@ -1,0 +1,33 @@
+.status {
+	height: 100%;
+}
+
+.status img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.time {
+	left: 25%;
+	height: 100%;
+}
+
+.temp, .humidity, .pressure {
+	left: 50%;
+}
+
+.temp {
+	height: 50%;
+}
+
+.humidity, .pressure {
+	height: 25%;
+}
+
+.pressure {
+	top: 50%;
+}
+
+.humidity {
+	top: 75%;
+}

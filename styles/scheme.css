@@ -21,7 +21,3 @@ body {
 .pressure {
 	background: #444;
 }
-
-.forecast-item {
-	background: linear-gradient(to top, #222, #000);
-}
