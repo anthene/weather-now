@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import { WeatherData } from "./weather-data.model";
 import { NowData } from "./now-data.model";
 import { ForecastData } from "./forecast-data.model";
+import { DayDetailData } from "./day-detail-data.model";
 import { WeatherService } from "./weather.service";
 
 @Injectable()
@@ -35,7 +36,16 @@ export class OpenWeatherService implements WeatherService {
                     .toPromise()
                     .then(res => {
                         const json = res.json();
-                        return json.list.map((item: any) => toForecastData(item, "future"));
+                        return json.list.map((item: any) => toForecastData(item));
+                    });
+    }
+
+    getDayDetails(): Promise<DayDetailData[]> {
+        return this.http.get(`${OpenWeatherService.url}forecast?id=524901&cnt=16&units=metric&appid=0da70d33c9a5dfaf3ded356599ea6929`)
+                    .toPromise()
+                    .then(res => {
+                        const json = res.json();
+                        return json.list.map((item: any) => toDayDetailsData(item));
                     });
     }
 
@@ -51,7 +61,10 @@ function toNowData(json: any): NowData {
     return now;
 }
 
-function toForecastData(json: any, time: string): ForecastData{
+function toForecastData(json: any, time?: string): ForecastData {
+    if (!time) {
+        time = new Date(json.dt*1000).toDateString();
+    }
     const forecast = new ForecastData();
     forecast.time = time;
     forecast.status = json.weather[0].main;
@@ -59,4 +72,13 @@ function toForecastData(json: any, time: string): ForecastData{
     forecast.maxTemp = json.temp.max;
     forecast.pressure = json.pressure;
     return forecast;
+}
+
+function toDayDetailsData(json: any): DayDetailData {
+    const now = new DayDetailData();
+    now.time = new Date(json.dt*1000).toLocaleTimeString();
+    now.status = json.weather[0].main;
+    now.nowTemp = json.main.temp;
+    now.pressure = json.main.pressure;
+    return now;
 }

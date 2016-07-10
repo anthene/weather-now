@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router-deprecated';
+import { RouteParams, Router } from '@angular/router-deprecated';
 
 import { InfoComponent } from '../shared/info.component';
+import { DayDetailData } from "../shared/day-detail-data.model";
+import { OpenWeatherService } from '../shared/open-weather.service';
 
 @Component({
-  template: `<div (click)="goBack()">Day Details Component</div>`
+  providers: [OpenWeatherService],
+  styleUrls: ["styles/day-details.css"],
+  templateUrl: "src/app/day-details/day-details.html"
 })
 export class DayDetailsComponent extends InfoComponent {
-  constructor(router: Router) {
+  dayDetails: DayDetailData[];
+
+  constructor(router: Router, routeParams: RouteParams, weatherService: OpenWeatherService) {
     super(router);
+    weatherService.getDayDetails().then(dayDetails => this.dayDetails = dayDetails);
   }
 }

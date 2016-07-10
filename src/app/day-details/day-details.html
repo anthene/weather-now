@@ -1,0 +1,3 @@
+<div *ngFor="let dayDetail of dayDetails; let i=index" class="day-detail-item" [id]="'day-detail-item-'+i" (click)="goBack()">
+    {{dayDetail.time}}|{{dayDetail.status}}|{{dayDetail.temp()}}|{{dayDetail.pressure}}
+</div>

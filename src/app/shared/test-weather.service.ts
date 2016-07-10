@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { WeatherData } from "./weather-data.model";
 import { NowData } from "./now-data.model";
 import { ForecastData } from "./forecast-data.model";
+import { DayDetailData } from "./day-detail-data.model";
 import { WeatherService } from "./weather.service";
 
 @Injectable()
@@ -38,6 +39,10 @@ export class TestWeatherService implements WeatherService {
     }
 
     getWeekForecast(): Promise<ForecastData[]> {
+        return undefined;
+    }
+
+    getDayDetails(): Promise<DayDetailData[]> {
         return undefined;
     }
 }
